@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+    <title>Tune your credit, see your impact.</title>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+
+<svg width="350" height="80" viewBox="0 0 350 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4CAF50" />
+      <stop offset="100%" stop-color="#81C784" />
+    </linearGradient>
+    <linearGradient id="sliderGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2196F3"/>
+      <stop offset="100%" stop-color="#64B5F6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Smooth bar chart -->
+  <rect x="10" y="35" width="12" height="25" rx="3" ry="3" fill="url(#barGrad)"/>
+  <rect x="27" y="28" width="12" height="32" rx="3" ry="3" fill="url(#barGrad)"/>
+  <rect x="44" y="22" width="12" height="38" rx="3" ry="3" fill="url(#barGrad)"/>
+  <rect x="61" y="15" width="12" height="45" rx="3" ry="3" fill="url(#barGrad)"/>
+
+  <!-- Slider line -->
+  <line x1="85" y1="0" x2="85" y2="60" stroke="#90CAF9" stroke-width="2" stroke-dasharray="5,3"/>
+  
+  <!-- Slider knob -->
+  <circle cx="85" cy="25" r="8" fill="url(#sliderGrad)" stroke="#1976D2" stroke-width="2"/>
+
+  <!-- Logo Text: FinTune -->
+  <text x="105" y="38" font-family="Montserrat, sans-serif" font-weight="700" font-size="24" fill="#4CAF50">Fin</text>
+  <text x="150" y="38" font-family="Montserrat, sans-serif" font-weight="400" font-size="24" fill="#2196F3">Tune</text>
+
+  <!-- Tagline -->
+  <text x="105" y="65" font-family="Montserrat, sans-serif" font-weight="400" font-size="14" fill="#555">
+    Tune your credit. See your impact.
+  </text>
+</svg>
+
+
+
+<div class="loan-configurator">
+
+  <div class="config-group" id="group-loan-terms">
+    <h3>Loan Terms</h3>
+
+    <!-- Credit Amount -->
+    <div class="config-row" id="credit-amount-row">
+      <label>Credit Amount</label>
+      <input id="credit-amount-slider" type="range" min="1000" max="200000" step="1000" value="50000" class="slider" />
+      <input id='credit-amount-value-box' type="number" value="50000" class="value-box" />
+      <button id="credit-amount-lock" class="lock-btn">🔓</button>
+    </div>
+
+    <!-- Term -->
+    <div class="config-row" id="term-row">
+      <label>Term (Months)</label>
+      <input id="term-slider" type="range" min="1" max="60" step="1" value="24" class="slider" />
+      <input id="term-value-box" type="number" value="24" class="value-box" />
+      <button id="term-lock"  class="lock-btn">🔓</button>
+    </div>
+
+    <!-- Annuity -->
+    <div class="config-row" id="annuity-row">
+      <label>Annuity</label>
+      <input id="annuity-slider" type="range" min="100" max="10000" step="50" value="3000" class="slider" />
+      <input id= "annuity-value-box" type="number" value="3000" class="value-box" />
+      <button id="annuity-lock" class="lock-btn">🔓</button>
+    </div>
+
+    <!-- Interest Rate -->
+    <div class="config-row" id="interest-rate-row">
+      <label>Interest Rate (%)</label>
+      <input id="ir-slider" type="range" min="0" max="20" step="0.1" value="3.1491266283552726" class="slider" />
+      <input id="ir-value-box" type="number" value="3.1491266283552726" step="0.1" class="value-box" />
+      <button id="ir-lock" class="lock-btn">🔓</button>
+    </div>
+  </div>
+
+  <div class="config-group" id="group-risk-costs">
+    <h3>Risk & Cost Parameters</h3>
+
+    <!-- Hazard of Default -->
+    <div class="config-row" id="hazard-default-row">
+      <label>Hazard of Default (%)</label>
+      <input id="dhaz-slider" type="range" min="0" max="100" step="0.1" value="2" class="slider" />
+      <input id="dhaz-value-box" type="number" value="2" step="0.1" class="value-box" />
+      <button class="lock-btn">🔓</button>
+    </div>
+
+    <!-- Hazard of Early Repayment -->
+    <div class="config-row" id="hazard-early-repayment-row">
+      <label>Hazard of Early Repayment (%)</label>
+      <input id="erhaz-slider" type="range" min="0" max="100" step="0.1" value="0" class="slider" />
+      <input id="erhaz-value-box" type="number" value="0" step="0.1" class="value-box" />
+      <button class="lock-btn">🔓</button>
+    </div>
+
+    <!-- Recovery Rate -->
+    <div class="config-row" id="recovery-rate-row">
+      <label>Recovery Rate (%)</label>
+      <input id="rr-slider" type="range" min="0" max="100" step="1" value="25" class="slider" />
+      <input id="rr-value-box" type="number" value="25" step="1" class="value-box" />
+      <button class="lock-btn">🔓</button>
+    </div>
+
+    <!-- Cost of Funding -->
+    <div class="config-row" id="cost-funding-row">
+      <label>Cost of Funding (%)</label>
+      <input id="cof-slider"type="range" min="0" max="50" step="0.1" value="10" class="slider" />
+      <input id="cof-value-box"  type="number" value="10" step="0.1" class="value-box" />
+      <button class="lock-btn">🔓</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="save-section">
+    <input type="text" id="variant-name" placeholder="Enter variant name">
+    <button onclick="saveResults()">Save to Results Table</button>
+</div>
+
+<table id="loan-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Current option</th>
+      <!-- New columns will be inserted here dynamically -->
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Calculated Fields -->
+    <tr>
+      <td colspan="2"><strong>Calculated Fields</strong></td>
+    </tr>
+    <tr>
+      <td>Interest income</td>
+      <td>5000.00</td>
+    </tr>
+    <tr>
+      <td>Principal loss</td>
+      <td>1500.00</td>
+    </tr>
+    <tr>
+      <td>Recoveries</td>
+      <td>500.00</td>
+    </tr>
+    <tr>
+      <td>Cost of funding</td>
+      <td>800.00</td>
+    </tr>
+    <tr>
+      <td>RACV</td>
+      <td>16700</td>
+    </tr>    
+    <tr>
+      <td>LTS (%)</td>
+      <td>15.00%</td>
+    </tr>
+    <tr>
+      <td>LTDEF (%)</td>
+      <td>20%</td>
+    </tr>
+    <tr>
+      <td>RC/ANR (%)</td>
+      <td>15.00%</td>
+    </tr>
+    <tr>
+      <td>RACV (%)</td>
+      <td>30.00%</td>
+    </tr>
+
+    <!-- Input Parameters -->
+    <tr>
+      <td colspan="2"><strong>Input Parameters</strong></td>
+    </tr>
+    <tr>
+      <td>Credit amount</td>
+      <td>________</td>
+    </tr>
+    <tr>
+      <td>Term</td>
+      <td>________</td>
+    </tr>
+    <tr>
+      <td>Annuity</td>
+      <td>________</td>
+    </tr>
+    <tr>
+      <td>Interest rate</td>
+      <td>________</td>
+    </tr>
+
+    <tr>
+      <td>Default hazard</td>
+      <td>________</td>
+    </tr>
+    <tr>
+      <td>Early repayment hazard</td>
+      <td>________</td>
+    </tr>
+    <tr>
+      <td>Recovery rate</td>
+      <td>________</td>
+    </tr>
+    <tr>
+      <td>Cost of funding</td>
+      <td>________</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+
+<div class="responsive-table-wrapper">
+  <table id='loan-schedule-table' class="loan-schedule-table">
+  <tr>
+    <th colspan=9>Instalment schedule</th>
+    <th colspan=6>Survival probabilities</th>
+  </tr>
+  <tr>
+    <th>Period</th>
+    <th>Balance start</th>
+    <th>Annuity</th>
+    <th>Interest</th>
+    <th>CumInterest</th>
+    <th>Fee</th>
+    <th>CumFee</th>
+    <th>Principal</th>
+    <th>Balance end</th>
+
+    <th>In the game start</th>
+    <th>Default</th>
+    <th>CumDefault</th>
+    <th>Full repayment</th>
+    <th>CumRepayment</th>
+    <th>In the game end</th>
+
+  </tr>
+</div>
+
+
+<script>
+  const ctx = document.getElementById('myChart');
+  
+
+</script>
+
+-->
+</body>
+</html>
+
+
+
+
+
+
